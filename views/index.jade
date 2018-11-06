@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title=title
+    link(rel='stylesheet', href='css/swagger-ui.css')
+    link(rel='stylesheet', href='css/style.css')  
+    link(rel='icon', type='image/png', href='images/favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='images/favicon-16x16.png', sizes='16x16')
+  body
+    #swagger-ui
+    input#swaggersrc(type='hidden', value=datasrc)
+    script(src='js/swagger-ui-bundle.js')
+    script(src='js/swagger-ui-standalone-preset.js')
+    script.
+      window.onload = function() {
+        const srcElement = document.getElementById("swaggersrc");
+        const jsonSource = srcElement.getAttribute("value");
+        // Build a system
+        const ui = SwaggerUIBundle({
+          url: jsonSource,
+          headers: 'Access-Control-Allow-Headers: Content-Type, api_key, Authorization',
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            SwaggerUIBundle.plugins.DownloadUrl
+          ],
+          layout: "StandaloneLayout"
+        })
+        window.ui = ui
+      }

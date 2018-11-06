@@ -1,0 +1,1052 @@
+{
+   "openapi": "3.0.0",
+   "info": {
+      "version": "0.0.1",
+      "title": "Sample Zerv Swagger"
+   },
+   "servers": [
+      {
+         "url": "http://34.217.161.150:6060"
+      }
+   ],
+   "tags": [
+      {
+         "name": "Intake form",
+         "description": "It saves user informations and interests"
+      },
+      {
+         "name": "Account Information",
+         "description": "It stores user details and company details(SAMS,Gunbroker,Duns)"
+      },
+      {
+         "name": "Login",
+         "description": "User able to login with the valid username and password"
+      },
+      {
+         "name": "Authentication",
+         "description": "To authenticate token for each API"
+      },
+      {
+         "name": "Multifactor Authentication",
+         "description": "User authentication by sending temporary code throung mail,call,text"
+      },
+      {
+         "name": "Profile",
+         "description": "Inserting details in user account collection"
+      },
+      {
+         "name": "Profile Details",
+         "description": "Fetching user details using"
+      },
+      {
+         "name": "Profile Interest",
+         "description": "Saving interest of the user and creating alerts"
+      },
+      {
+         "name": "Profile Document Upload",
+         "description": "Uploading files on to the server"
+      },
+      {
+         "name": "Profile Company",
+         "description": "Saving company details"
+      },
+      {
+         "name": "Profile Token",
+         "description": "Saving zerv blockchain address"
+      }
+   ],
+   "paths": {
+      "/users/intake": {
+         "post": {
+            "tags": [
+               "Intake form"
+            ],
+            "requestBody": {
+               "description": "Enter all listed details in intakeform",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "emailId": {
+                              "type": "string"
+                           },
+                           "phoneCode": {
+                              "type": "string"
+                           },
+                           "phoneNumber": {
+                              "type": "string"
+                           },
+                           "country": {
+                              "type": "string"
+                           },
+                           "address": {
+                              "type": "string"
+                           },
+                           "zip": {
+                              "type": "integer"
+                           },
+                           "state": {
+                              "type": "string"
+                           },
+                           "city": {
+                              "type": "string"
+                           },
+                           "legalBusinessName": {
+                              "type": "string"
+                           },
+                           "description": {
+                              "type": "string"
+                           },
+                           "businessTypeSupplier": {
+                              "type": "boolean"
+                           },
+                           "businessTypeManufacturer": {
+                              "type": "boolean"
+                           },
+                           "businessTypeConsumer": {
+                              "type": "boolean"
+                           },
+                           "businessTypeDistributor": {
+                              "type": "boolean"
+                           },
+                           "businessTypeGovernment": {
+                              "type": "boolean"
+                           },
+                           "compCase": {
+                              "type": "string"
+                           },
+                           "compProjectile": {
+                              "type": "string"
+                           },
+                           "compGunpowder": {
+                              "type": "string"
+                           },
+                           "compPrimer": {
+                              "type": "string"
+                           },
+                           "ammoHandgun": {
+                              "type": "string"
+                           },
+                           "ammoShortgun": {
+                              "type": "string"
+                           },
+                           "ammoRifle": {
+                              "type": "string"
+                           },
+                           "ammoRimfire": {
+                              "type": "string"
+                           },
+                           "brandWinchester": {
+                              "type": "string"
+                           },
+                           "brandRemington": {
+                              "type": "string"
+                           },
+                           "brandFederal": {
+                              "type": "string"
+                           },
+                           "brandFiocchi": {
+                              "type": "string"
+                           },
+                           "brandHornaday": {
+                              "type": "string"
+                           },
+                           "brandX": {
+                              "type": "string"
+                           },
+                           "brandY": {
+                              "type": "string"
+                           },
+                           "brandZ": {
+                              "type": "string"
+                           },
+                           "tpUsGovt": {
+                              "type": "string"
+                           },
+                           "tpIntGovt": {
+                              "type": "string"
+                           },
+                           "tpUsCommercial": {
+                              "type": "string"
+                           },
+                           "tpIntCommercial": {
+                              "type": "string"
+                           },
+                           "saletermImmediate": {
+                              "type": "string"
+                           },
+                           "saletermLt30days": {
+                              "type": "string"
+                           },
+                           "saletermGt30days": {
+                              "type": "string"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/account": {
+         "post": {
+            "tags": [
+               "Account Information"
+            ],
+            "requestBody": {
+               "description": "To create an account with all required details",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "emailId": {
+                              "type": "string"
+                           },
+                           "phoneNumber": {
+                              "type": "number"
+                           },
+                           "userName": {
+                              "type": "string"
+                           },
+                           "ConfirmUserName": {
+                              "type": "string"
+                           },
+                           "password": {
+                              "type": "string"
+                           },
+                           "ConfirmPassWord": {
+                              "type": "string"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         },
+         "put": {
+            "tags": [
+               "Account Information"
+            ],
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "Token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "Enter the Token"
+               }
+            ],
+            "requestBody": {
+               "description": "To create an account with all required details",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "fflNumber": {
+                              "type": "string"
+                           },
+                           "ipAddress": {
+                              "type": "string"
+                           },
+                           "macAddress": {
+                              "type": "string"
+                           },
+                           "companyDescridescription": {
+                              "type": "string"
+                           },
+                           "businessClassification": {
+                              "type": "string"
+                           },
+                           "logo": {
+                              "type": "string"
+                           },
+                           "fbAccount": {
+                              "type": "string"
+                           },
+                           "instagramAccount": {
+                              "type": "string"
+                           },
+                           "twitterAccount": {
+                              "type": "string"
+                           },
+                           "accountType": {
+                              "type": "string"
+                           },
+                           "eni": {
+                              "type": "string"
+                           },
+                           "fflLicenseNo": {
+                              "type": "string"
+                           },
+                           "fflLicense": {
+                              "type": "string"
+                           },
+                           "atfLicenseNo": {
+                              "type": "string"
+                           },
+                           "atfLicense": {
+                              "type": "string"
+                           },
+                           "itarLicenseNo": {
+                              "type": "string"
+                           },
+                           "itrLicense": {
+                              "type": "string"
+                           },
+                           "businessTaxLicenseNo": {
+                              "type": "string"
+                           },
+                           "businessTaxLicense": {
+                              "type": "string"
+                           },
+                           "ncage": {
+                              "type": "string"
+                           },
+                           "dodaac": {
+                              "type": "string"
+                           },
+                           "divisionNumber": {
+                              "type": "string"
+                           },
+                           "corporateStructureDescription": {
+                              "type": "string"
+                           },
+                           "pastPerformancePoc": {
+                              "type": "string"
+                           },
+                           "altPastPerformancePoc": {
+                              "type": "string"
+                           },
+                           "correspondenceFlag": {
+                              "type": "string"
+                           },
+                           "samstatus": {
+                              "type": "string"
+                           },
+                           "sbaCertificationExpirationDate": {
+                              "type": "number"
+                           },
+                           "pscCodes": {
+                              "type": "array",
+                              "items": {}
+                           },
+                           "certifications": {
+                              "type": "object"
+                           },
+                           "samsDetails": {
+                              "type": "object"
+                           },
+                           "duns": {
+                              "type": "string"
+                           },
+                           "duns4": {
+                              "type": "string"
+                           },
+                           "cage": {
+                              "type": "string"
+                           },
+                           "purposeOfRegistration": {
+                              "type": "string"
+                           },
+                           "registrationDate": {
+                              "type": "number"
+                           },
+                           "expirationDate": {
+                              "type": "number"
+                           },
+                           "activationDate": {
+                              "type": "number"
+                           },
+                           "lastUpdatedDate": {
+                              "type": "number"
+                           },
+                           "legalBusinessName": {
+                              "type": "string"
+                           },
+                           "doingBusinessAsName": {
+                              "type": "string"
+                           },
+                           "companyDivision": {
+                              "type": "string"
+                           },
+                           "samAddress": {
+                              "type": "object"
+                           },
+                           "congressionalDistrict": {
+                              "type": "string"
+                           },
+                           "businessStartDate": {
+                              "type": "number"
+                           },
+                           "fiscalYearCloseDay": {
+                              "type": "string"
+                           },
+                           "corporateUrl": {
+                              "type": "string"
+                           },
+                           "corporateStructureCode": {
+                              "type": "string"
+                           },
+                           "mailingAddress": {
+                              "type": "object"
+                           },
+                           "stateOfIncorporation": {
+                              "type": "string"
+                           },
+                           "countryOfIncorporation": {
+                              "type": "string"
+                           },
+                           "govtBusinessPoc": {
+                              "type": "object"
+                           },
+                           "altGovtBusinessPoc": {
+                              "type": "object"
+                           },
+                           "electronicBusinessPoc": {
+                              "type": "object"
+                           },
+                           "altElectronicBusinessPoc": {
+                              "type": "object"
+                           },
+                           "creditCardUsage": {
+                              "type": "boolean"
+                           },
+                           "hasDelinquentFederalDebt": {
+                              "type": "boolean"
+                           },
+                           "hasKnownExclusion": {
+                              "type": "boolean"
+                           },
+                           "statusMessage": {
+                              "type": "string"
+                           },
+                           "businessTypes": {
+                              "type": "array",
+                              "items": {}
+                           },
+                           "disasterRelief": {
+                              "type": "array",
+                              "items": {}
+                           },
+                           "qualifications": {
+                              "type": "object"
+                           },
+                           "selfCertifySamsDetails": {
+                              "type": "boolean"
+                           },
+                           "acceptComanyInfoTermsConditions": {
+                              "type": "boolean"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/login": {
+         "post": {
+            "tags": [
+               "Login"
+            ],
+            "requestBody": {
+               "description": "To create an user account with given email id",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userName": {
+                              "type": "string"
+                           },
+                           "password": {
+                              "type": "string"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/105": {
+         "get": {
+            "tags": [
+               "Authentication"
+            ],
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/mfa": {
+         "post": {
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "tags": [
+               "Multifactor Authentication"
+            ],
+            "requestBody": {
+               "description": "Mfa code will generate",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "password": {
+                              "type": "string"
+                           },
+                           "mfaEmailCode": {
+                              "type": "number"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/profile": {
+         "post": {
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "tags": [
+               "Profile"
+            ],
+            "requestBody": {
+               "description": "Enter profile details",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "info": {
+                              "type": "object",
+                              "properties": {
+                                 "companyDescridescription": {
+                                    "type": "string"
+                                 },
+                                 "businessClassification": {
+                                    "type": "string"
+                                 },
+                                 "logo": {
+                                    "type": "string"
+                                 },
+                                 "fbAccount": {
+                                    "type": "string"
+                                 },
+                                 "instagramAccount": {
+                                    "type": "string"
+                                 },
+                                 "twitterAccount": {
+                                    "type": "string"
+                                 },
+                                 "accountType": {
+                                    "type": "string"
+                                 },
+                                 "eni": {
+                                    "type": "number"
+                                 },
+                                 "atfLicenseNo": {
+                                    "type": "number"
+                                 },
+                                 "itarLicenseNo": {
+                                    "type": "number"
+                                 },
+                                 "businessTaxLicenseNo": {
+                                    "type": "number"
+                                 },
+                                 "fflLicenseUrl": {
+                                    "type": "string"
+                                 },
+                                 "atfLicenseUrl": {
+                                    "type": "string"
+                                 },
+                                 "businesstaxLicenseUrl": {
+                                    "type": "string"
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/profile/details": {
+         "get": {
+            "tags": [
+               "Profile Details"
+            ],
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               },
+               {
+                  "in": "header",
+                  "name": "userid",
+                  "schema": {
+                     "type": "integer"
+                  },
+                  "required": true,
+                  "description": "enter the user id"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/profile/intrests": {
+         "post": {
+            "tags": [
+               "Profile Interest"
+            ],
+            "requestBody": {
+               "description": "Make an interest",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "alertName": {
+                              "type": "string"
+                           },
+                           "transactionType": {
+                              "type": "string"
+                           },
+                           "compCase": {
+                              "type": "boolean"
+                           },
+                           "compProjectile": {
+                              "type": "boolean"
+                           },
+                           "compGunpowder": {
+                              "type": "boolean"
+                           },
+                           "compPrimer": {
+                              "type": "boolean"
+                           },
+                           "ammoHandgun": {
+                              "type": "boolean"
+                           },
+                           "ammoShortgun": {
+                              "type": "boolean"
+                           },
+                           "ammoRifle": {
+                              "type": "boolean"
+                           },
+                           "ammoRimfire": {
+                              "type": "boolean"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/profile/docupload": {
+         "post": {
+            "tags": [
+               "Profile Document Upload"
+            ],
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/Profile/company": {
+         "post": {
+            "tags": [
+               "Profile Company"
+            ],
+            "requestBody": {
+               "description": "Make an interest",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "info": {
+                              "type": "object",
+                              "properties": {
+                                 "legalBusinessName": {
+                                    "type": "string"
+                                 },
+                                 "doingBusinessAsName": {
+                                    "type": "string"
+                                 },
+                                 "corporateStructureDescription": {
+                                    "type": "string"
+                                 },
+                                 "mailingAddress": {
+                                    "type": "string"
+                                 },
+                                 "expirationDate": {
+                                    "type": "number"
+                                 },
+                                 "pscCodes": {
+                                    "type": "number"
+                                 },
+                                 "duns": {
+                                    "type": "number"
+                                 },
+                                 "cage": {
+                                    "type": "number"
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      },
+      "/users/profile/token": {
+         "put": {
+            "tags": [
+               "Profile Token"
+            ],
+            "parameters": [
+               {
+                  "in": "header",
+                  "name": "token",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "required": true,
+                  "description": "enter the token"
+               }
+            ],
+            "requestBody": {
+               "description": "Make an interest",
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "userId": {
+                              "type": "number"
+                           },
+                           "zervPlatformAddress": {
+                              "type": "string"
+                           },
+                           "etherPlatformAddress": {
+                              "type": "string"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "bad request"
+               },
+               "404": {
+                  "description": "unauthorized"
+               }
+            }
+         }
+      }
+   }
+}
